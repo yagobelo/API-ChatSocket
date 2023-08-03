@@ -15,5 +15,13 @@ export default class App {
         origin: "*",
       },
     });
+
+    this.socketIo.on("connection", (socket) => {
+      console.log("Teste!");
+
+      socket.on("message", (message) => {
+        this.socketIo.emit("message", message);
+      });
+    });
   }
 }
